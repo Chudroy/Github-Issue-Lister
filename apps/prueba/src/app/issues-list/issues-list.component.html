@@ -1,0 +1,7 @@
+<input type="text" />
+<button (click)="getIssues()">Get Issues</button>
+
+<h2 *ngIf="error">{{ error }}</h2>
+<p *ngFor="let issue of issues">
+  {{ issue['title'] }}
+</p>

@@ -3,6 +3,18 @@
   "version": 2,
   "projects": {
     "prueba": "apps/prueba",
+    "prueba-backend": "apps/prueba-backend",
     "prueba-e2e": "apps/prueba-e2e"
+  },
+  "build": {
+    "executor": "@nrwl/angular:webpack-browser",
+    "options": {
+      "customWebpackConfig": {
+        "path": "apps/myapp/webpack.config.js"
+      }
+    }
+  },
+  "serve": {
+    "executor": "@nrwl/angular:webpack-server"
   }
 }
