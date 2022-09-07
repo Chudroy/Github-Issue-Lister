@@ -8,8 +8,24 @@ import { catchError, retry } from 'rxjs/operators';
 export class IssuesHttpServiceService {
   constructor(private http: HttpClient) {}
 
-  getIssues(): Observable<any> {
-    return this.http.get('/api/nrwl/nx').pipe(catchError(this.handleError));
+  getIssues(url: string): Observable<any> {
+    //Check for valid URL
+    const regex = /github.com\/[\w-]+\/[\w-]+/;
+    const validUrl = RegExp(regex);
+
+    if (!validUrl.test(url)) {
+      return throwError(
+        () =>
+          new Error('Invalid URL. Must be of format "github.com/OWNER/REPO"')
+      );
+    }
+
+    //Remove domain
+    const domain = RegExp('^(.*?)github.com/');
+    const subDir = url.replace(domain, '');
+
+    //Add remaining to URL request
+    return this.http.get(`/api/${subDir}`).pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {

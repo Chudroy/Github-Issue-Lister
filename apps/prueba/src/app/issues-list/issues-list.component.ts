@@ -9,18 +9,19 @@ import { IssuesHttpServiceService } from '../issues-http-service.service';
 export class IssuesListComponent implements OnInit {
   constructor(private issuesHttpServiceService: IssuesHttpServiceService) {}
 
+  repoUrl = '';
   issues: Array<Record<string, unknown>> = [];
   error = '';
 
   ngOnInit(): void {
-    this.getIssues();
+    this.getIssues('https://github.com/octokit/octokit.js');
   }
 
-  getIssues() {
-    this.issuesHttpServiceService.getIssues().subscribe({
+  getIssues(url: string) {
+    this.issuesHttpServiceService.getIssues(url).subscribe({
       next: (issues) => {
         this.issues = issues.data;
-        console.log(this.issues);
+        console.log(issues);
       },
       error: (err) => {
         this.error = err;

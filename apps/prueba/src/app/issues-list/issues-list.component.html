@@ -1,5 +1,15 @@
-<input type="text" />
-<button (click)="getIssues()">Get Issues</button>
+<p>Enter a Github URL, in the format <b>github.com/owner/repo/</b></p>
+<form action="">
+  <label for="github-url">Github URL</label>
+  <input
+    id="github-url"
+    name="github-url"
+    type="text"
+    [(ngModel)]="repoUrl"
+    placeholder="https://github.com/octokit/octokit.js"
+  />
+  <button (click)="getIssues(repoUrl)">Get Issues</button>
+</form>
 
 <h2 *ngIf="error">{{ error }}</h2>
 <p *ngFor="let issue of issues">
