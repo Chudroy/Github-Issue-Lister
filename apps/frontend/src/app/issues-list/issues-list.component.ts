@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { IssuesHttpServiceService } from '../services/issues-http-service/issues-http-service.service';
 import { Store } from '@ngrx/store';
 import { selectIssueList } from '../state/issues.selectors';
+import { retrievedIssuesList } from '../state/issues.actions';
+import { Issue } from './issues.model';
+import { Observable } from 'rxjs';
+import { stat } from 'fs';
+
 @Component({
   selector: 'prueba-irontec-issues-list',
   templateUrl: './issues-list.component.html',
@@ -10,7 +15,7 @@ import { selectIssueList } from '../state/issues.selectors';
 export class IssuesListComponent implements OnInit {
   repoUrl = '';
   error = '';
-  issues: Array<Record<string, unknown>> = [];
+  issues: any;
   issues$ = this.store.select(selectIssueList);
 
   constructor(
@@ -19,12 +24,16 @@ export class IssuesListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.issues$.subscribe((state) => {
+      this.issues = state;
+    });
     this.getIssues('https://github.com/octokit/octokit.js');
   }
 
   getIssues(url: string) {
     this.issuesHttpServiceService.getIssues(url).subscribe({
       next: (issues) => {
+        this.store.dispatch(retrievedIssuesList({ issues: issues.data }));
         this.issues = issues.data;
         console.log(issues);
       },
