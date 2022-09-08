@@ -7,12 +7,12 @@
       "executor": "@nrwl/cypress:cypress",
       "options": {
         "cypressConfig": "apps/prueba-e2e/cypress.config.ts",
-        "devServerTarget": "prueba:serve:development",
+        "devServerTarget": "frontend:serve:development",
         "testingType": "e2e"
       },
       "configurations": {
         "production": {
-          "devServerTarget": "prueba:serve:production"
+          "devServerTarget": "frontend:serve:production"
         }
       }
     },
@@ -25,5 +25,5 @@
     }
   },
   "tags": [],
-  "implicitDependencies": ["prueba"]
+  "implicitDependencies": ["frontend"]
 }

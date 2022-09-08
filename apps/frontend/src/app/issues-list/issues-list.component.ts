@@ -1,17 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { IssuesHttpServiceService } from '../issues-http-service.service';
-
+import { IssuesHttpServiceService } from '../services/issues-http-service/issues-http-service.service';
+import { Store } from '@ngrx/store';
+import { selectIssueList } from '../state/issues.selectors';
 @Component({
   selector: 'prueba-irontec-issues-list',
   templateUrl: './issues-list.component.html',
   styleUrls: ['./issues-list.component.scss'],
 })
 export class IssuesListComponent implements OnInit {
-  constructor(private issuesHttpServiceService: IssuesHttpServiceService) {}
-
   repoUrl = '';
-  issues: Array<Record<string, unknown>> = [];
   error = '';
+  issues: Array<Record<string, unknown>> = [];
+  issues$ = this.store.select(selectIssueList);
+
+  constructor(
+    private store: Store,
+    private issuesHttpServiceService: IssuesHttpServiceService
+  ) {}
 
   ngOnInit(): void {
     this.getIssues('https://github.com/octokit/octokit.js');

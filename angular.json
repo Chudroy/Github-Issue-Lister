@@ -2,8 +2,8 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
-    "prueba": "apps/prueba",
-    "prueba-backend": "apps/prueba-backend",
+    "backend": "apps/backend",
+    "frontend": "apps/frontend",
     "prueba-e2e": "apps/prueba-e2e"
   },
   "build": {

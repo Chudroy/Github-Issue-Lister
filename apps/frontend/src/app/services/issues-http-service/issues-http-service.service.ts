@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
+
+import { Issue } from '../../issues-list/issues.model';
 @Injectable({
   providedIn: 'root',
 })
@@ -26,6 +28,11 @@ export class IssuesHttpServiceService {
 
     //Add remaining to URL request
     return this.http.get(`/api/${subDir}`).pipe(catchError(this.handleError));
+
+    // return this.http.get<{ data: Issue[] }>(`/api/${subDir}`).pipe(
+    //   map((obj) => obj.data || []),
+    //   catchError(this.handleError)
+    // );
   }
 
   private handleError(error: HttpErrorResponse) {
