@@ -21,6 +21,8 @@ app.get('/api/:OWNER/:REPO', async (req, res) => {
 
   // return res.send({ message: 'API GET!' });
 
+  const query = req.query;
+
   const { OWNER, REPO } = req.params;
 
   const octokit = new Octokit({
@@ -29,8 +31,9 @@ app.get('/api/:OWNER/:REPO', async (req, res) => {
 
   await octokit
     .request(`GET /repos/${OWNER}/${REPO}/issues`, {
-      owner: 'OWNER',
-      repo: 'REPO',
+      owner: OWNER,
+      repo: REPO,
+      page: query.p || 1,
     })
     .then((issues) => {
       if (issues) return res.send(issues);

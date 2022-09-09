@@ -7,6 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { IssuesListComponent } from './issues-list/issues-list.component';
 import { issuesReducer } from './state/issues.reducer';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { IssuesEffects } from './state/issues.effects';
 
 @NgModule({
   declarations: [AppComponent, IssuesListComponent],
@@ -15,6 +17,7 @@ import { StoreModule } from '@ngrx/store';
     HttpClientModule,
     FormsModule,
     StoreModule.forRoot({ issues: issuesReducer }, {}),
+    EffectsModule.forRoot([IssuesEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],

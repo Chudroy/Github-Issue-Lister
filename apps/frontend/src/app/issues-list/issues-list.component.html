@@ -8,7 +8,7 @@
     [(ngModel)]="repoUrl"
     placeholder="https://github.com/octokit/octokit.js"
   />
-  <button (click)="getIssues(repoUrl)">Get Issues</button>
+  <button (click)="getIssues(repoUrl, 1)">Get Issues</button>
 </form>
 
 <h2 *ngIf="error">{{ error }}</h2>
