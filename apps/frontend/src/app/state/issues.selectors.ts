@@ -1,4 +1,3 @@
-import { createSelector, createFeatureSelector } from '@ngrx/store';
-import { Issue } from '../issues-list/issues.model';
+import { createFeatureSelector } from '@ngrx/store';
 
 export const selectIssueList = createFeatureSelector('issues');

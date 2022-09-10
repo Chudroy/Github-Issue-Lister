@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { IssuesHttpServiceService } from '../services/issues-http-service/issues-http-service.service';
 import { Store } from '@ngrx/store';
 import { selectIssueList } from '../state/issues.selectors';
-import { loadIssuesList, retrievedIssuesList } from '../state/issues.actions';
+import { selectError } from '../state/error.selectors';
+import { loadIssuesList } from '../state/issues.actions';
 import { Issue } from './issues.model';
 
+import { fakeIssues } from '../fake-issues/fake-issues';
 @Component({
   selector: 'prueba-irontec-issues-list',
   templateUrl: './issues-list.component.html',
@@ -13,17 +14,22 @@ import { Issue } from './issues.model';
 export class IssuesListComponent implements OnInit {
   repoUrl = '';
   error = '';
-  issues: Array<Issue> = [];
+  error$ = this.store.select(selectError);
+  issues: Array<Issue> = fakeIssues;
   issues$ = this.store.select(selectIssueList);
 
   constructor(private store: Store) {}
 
   ngOnInit(): void {
-    this.issues$.subscribe((state: any) => {
-      this.issues = state.data as Array<Issue>;
+    // this.issues$.subscribe((state: any) => {
+    //   this.issues = state as Array<Issue>;
+    // });
+
+    this.error$.subscribe((state: any) => {
+      this.error = state as string;
     });
 
-    this.getIssues('https://github.com/freeCodeCamp/freeCodeCamp', 1);
+    // this.getIssues('https://github.com/kamranahmedse/developer-roadmap', 1);
   }
 
   getIssues(url: string, page: number) {

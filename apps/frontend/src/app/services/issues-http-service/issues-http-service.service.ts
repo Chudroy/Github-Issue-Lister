@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 
 import { Issue } from '../../issues-list/issues.model';
 @Injectable({
@@ -27,12 +27,27 @@ export class IssuesHttpServiceService {
     const subDir = url.replace(domain, '');
 
     //Add remaining to URL request
-    return this.http.get(`/api/${subDir}`).pipe(catchError(this.handleError));
+    // return this.http.get(`/api/${subDir}`).pipe(
+    //   tap((x) => {
+    //     console.log(x);
+    //   }),
 
-    // return this.http.get<{ data: Issue[] }>(`/api/${subDir}`).pipe(
-    //   map((obj) => obj.data || []),
     //   catchError(this.handleError)
     // );
+
+    return this.http.get<{ data: Issue[] }>(`/api/${subDir}`).pipe(
+      //filter pull requests
+      map(
+        (response) =>
+          response.data.filter((issue) => {
+            return issue.pull_request ? false : true;
+          }) || []
+      ),
+      tap((x) => {
+        console.log(x);
+      }),
+      catchError(this.handleError)
+    );
   }
 
   private handleError(error: HttpErrorResponse) {

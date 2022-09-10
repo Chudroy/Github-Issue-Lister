@@ -10,3 +10,8 @@ export const retrievedIssuesList = createAction(
   '[Issue List/API] Retrieve Issues Success',
   props<{ issues: ReadonlyArray<Issue> }>()
 );
+
+export const LoadIssuesError = createAction(
+  '[Issue List/API] Retrieve Issues Error',
+  props<{ message: string }>()
+);

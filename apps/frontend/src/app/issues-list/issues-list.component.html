@@ -1,17 +1,65 @@
-<p>Enter a Github URL, in the format <b>github.com/owner/repo/</b></p>
-<form action="">
-  <label for="github-url">Github URL</label>
-  <input
-    id="github-url"
-    name="github-url"
-    type="text"
-    [(ngModel)]="repoUrl"
-    placeholder="https://github.com/octokit/octokit.js"
-  />
-  <button (click)="getIssues(repoUrl, 1)">Get Issues</button>
-</form>
+<mat-card class="get-issues-card">
+  <mat-card-title>Get Issues</mat-card-title>
+  <mat-card-subtitle
+    ><p>
+      Enter a Github URL, in the format <b>github.com/owner/repo/</b>
+    </p></mat-card-subtitle
+  >
+  <mat-card-content>
+    <form class="issues-form" action="">
+      <mat-form-field class="issues-form__url-input" appearance="fill">
+        <mat-label for="github-url">Github URL</mat-label>
+        <input
+          id="github-url"
+          name="github-url"
+          type="text"
+          [(ngModel)]="repoUrl"
+          placeholder="ex: https://github.com/octokit/octokit.js"
+          matInput
+        />
+      </mat-form-field>
+      <mat-checkbox
+        id="filter-pull-request"
+        class="checkbox"
+        name="filter-pull-request"
+        type="checkbox"
+        >Filter pull requests</mat-checkbox
+      >
+
+      <button color="primary" mat-raised-button (click)="getIssues(repoUrl, 1)">
+        Get Issues
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>
 
 <h2 *ngIf="error">{{ error }}</h2>
-<p *ngFor="let issue of issues">
-  {{ issue['title'] }}
-</p>
+
+<mat-card *ngFor="let issue of issues" class="issue-card">
+  <div class="issue-card__subtitle">
+    <mat-card-subtitle>{{ issue['user'] }} </mat-card-subtitle>
+    <mat-card-subtitle> #{{ issue['number'] }}</mat-card-subtitle>
+  </div>
+  <mat-card-title>{{ issue['title'] }}</mat-card-title>
+  <mat-card-content
+    [class]="issue['body'].length > 400 ? 'fade' : ''"
+    class="issue-card__content"
+  >
+    <p>{{ issue['body'] }}</p>
+  </mat-card-content>
+  <mat-divider class="divider--issue-card" inset></mat-divider>
+  <mat-card-content> {{ issue['created_at'] | date }}</mat-card-content>
+  <mat-card-actions>
+    <a [href]="issue['url']" color="accent" mat-button
+      >GO TO ISSUE</a
+    ></mat-card-actions
+  >
+</mat-card>
+
+<!-- <mat-card *ngFor="let issue of issues">
+  <div>{{ issue['title'] }}</div>
+  <div>
+    <p>{{ issue['body'] }}</p>
+  </div>
+  <div></div>
+</mat-card> -->

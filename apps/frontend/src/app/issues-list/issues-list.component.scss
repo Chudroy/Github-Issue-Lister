@@ -1,0 +1,70 @@
+$card-width: 65vw;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5rem;
+}
+.get-issues-card {
+  margin: 1rem;
+  width: $card-width;
+  max-width: 1000px;
+}
+.issues-form {
+  margin: auto auto 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__url-wrapper {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-around;
+  }
+
+  &__url-input {
+    flex-grow: 1;
+    width: 100%;
+  }
+}
+
+.checkbox {
+  margin: auto auto 1rem;
+}
+
+.issue-card {
+  margin: 1rem;
+  width: $card-width;
+  max-width: 1000px;
+
+  &__subtitle {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__content {
+    overflow-y: hidden;
+    max-height: 256px;
+  }
+}
+
+.divider--issue-card {
+  margin-bottom: 1rem !important;
+}
+
+.fade {
+  -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent);
+}
+
+@media only screen and (max-width: 600px) {
+  $sm-card-width: 80vw;
+  .get-issues-card {
+    width: $sm-card-width;
+  }
+  .issue-card {
+    width: $sm-card-width;
+  }
+}
