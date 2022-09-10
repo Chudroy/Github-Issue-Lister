@@ -4,7 +4,7 @@ export interface Issue {
   user: User;
   number: number;
   created_at: string;
-  url: string;
+  html_url: string;
   labels?: string[];
   pull_request?: object;
 }

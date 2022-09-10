@@ -10,7 +10,7 @@ export const fakeIssues: Issue[] = [
     },
     number: 123456,
     created_at: '2011-04-10T20:09:31Z',
-    url: 'https://api.github.com/repos/octocat/Hello-World/issues/1347',
+    html_url: 'https://api.github.com/repos/octocat/Hello-World/issues/1347',
   },
 
   {
@@ -21,7 +21,7 @@ export const fakeIssues: Issue[] = [
     },
     number: 123456,
     created_at: '2011-04-10T20:09:31Z',
-    url: 'https://api.github.com/repos/octocat/Hello-World/issues/1347',
+    html_url: 'https://api.github.com/repos/octocat/Hello-World/issues/1347',
   },
   {
     title: 'Update 105-what-is-hosting.md',
@@ -31,7 +31,7 @@ export const fakeIssues: Issue[] = [
     },
     number: 123456,
     created_at: '2011-04-10T20:09:31Z',
-    url: 'https://api.github.com/repos/octocat/Hello-World/issues/1347',
+    html_url: 'https://api.github.com/repos/octocat/Hello-World/issues/1347',
   },
   {
     title: '[Suggestion] Android Developer - Jetpack Compose',
@@ -41,7 +41,7 @@ export const fakeIssues: Issue[] = [
     },
     number: 123456,
     created_at: '2011-04-10T20:09:31Z',
-    url: 'https://api.github.com/repos/octocat/Hello-World/issues/1347',
+    html_url: 'https://api.github.com/repos/octocat/Hello-World/issues/1347',
   },
   {
     title: '[Suggestion] QA Engineer',
@@ -51,7 +51,7 @@ export const fakeIssues: Issue[] = [
     },
     number: 123456,
     created_at: '2011-04-10T20:09:31Z',
-    url: 'https://api.github.com/repos/octocat/Hello-World/issues/1347',
+    html_url: 'https://api.github.com/repos/octocat/Hello-World/issues/1347',
   },
   {
     title: '[Suggestion] All Roadmaps - Filter based on checkmark color',
@@ -61,6 +61,6 @@ export const fakeIssues: Issue[] = [
     },
     number: 123456,
     created_at: '2011-04-10T20:09:31Z',
-    url: 'https://api.github.com/repos/octocat/Hello-World/issues/1347',
+    html_url: 'https://api.github.com/repos/octocat/Hello-World/issues/1347',
   },
 ];

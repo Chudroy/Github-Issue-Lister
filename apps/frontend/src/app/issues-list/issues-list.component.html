@@ -50,7 +50,7 @@
   <mat-divider class="divider--issue-card" inset></mat-divider>
   <mat-card-content> {{ issue['created_at'] | date }}</mat-card-content>
   <mat-card-actions>
-    <a [href]="issue['url']" color="accent" mat-button
+    <a [href]="issue['html_url']" target="_blank" color="accent" mat-button
       >GO TO ISSUE</a
     ></mat-card-actions
   >
