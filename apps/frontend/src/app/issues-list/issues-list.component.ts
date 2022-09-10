@@ -15,21 +15,22 @@ export class IssuesListComponent implements OnInit {
   repoUrl = '';
   error = '';
   error$ = this.store.select(selectError);
-  issues: Array<Issue> = fakeIssues;
+  issues: Array<Issue> = [];
   issues$ = this.store.select(selectIssueList);
 
   constructor(private store: Store) {}
 
   ngOnInit(): void {
-    // this.issues$.subscribe((state: any) => {
-    //   this.issues = state as Array<Issue>;
-    // });
+    this.issues$.subscribe((state: any) => {
+      this.issues = state as Array<Issue>;
+      console.log(this.issues);
+    });
 
     this.error$.subscribe((state: any) => {
       this.error = state as string;
     });
 
-    // this.getIssues('https://github.com/kamranahmedse/developer-roadmap', 1);
+    this.getIssues('https://github.com/rinnakk/japanese-stable-diffusion', 1);
   }
 
   getIssues(url: string, page: number) {
@@ -39,5 +40,12 @@ export class IssuesListComponent implements OnInit {
         page: page,
       })
     );
+  }
+
+  fadeContentBody(issue: Issue): string {
+    if (issue['body'] && issue['body'].length > 400) {
+      return 'fade';
+    }
+    return '';
   }
 }

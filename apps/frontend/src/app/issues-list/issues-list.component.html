@@ -37,12 +37,12 @@
 
 <mat-card *ngFor="let issue of issues" class="issue-card">
   <div class="issue-card__subtitle">
-    <mat-card-subtitle>{{ issue['user'] }} </mat-card-subtitle>
+    <mat-card-subtitle>{{ issue['user']['login'] }} </mat-card-subtitle>
     <mat-card-subtitle> #{{ issue['number'] }}</mat-card-subtitle>
   </div>
   <mat-card-title>{{ issue['title'] }}</mat-card-title>
   <mat-card-content
-    [class]="issue['body'].length > 400 ? 'fade' : ''"
+    [class]="fadeContentBody(issue)"
     class="issue-card__content"
   >
     <p>{{ issue['body'] }}</p>

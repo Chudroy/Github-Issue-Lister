@@ -6,6 +6,7 @@
 import * as express from 'express';
 import * as cors from 'cors';
 import { Octokit, App } from 'octokit';
+import { fakeRes } from './assets/fakeRes.js';
 
 const app = express();
 
@@ -20,6 +21,8 @@ app.get('/api/:OWNER/:REPO', async (req, res) => {
   // https://github.com/octokit/core.js#readme
 
   // return res.send({ message: 'API GET!' });
+
+  return res.send(fakeRes);
 
   const query = req.query;
 

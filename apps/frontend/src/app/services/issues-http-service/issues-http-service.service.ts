@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Issue } from '../../issues-list/issues.model';
+import { response } from 'express';
 @Injectable({
   providedIn: 'root',
 })
@@ -26,26 +27,17 @@ export class IssuesHttpServiceService {
     const domain = RegExp('^(.*?)github.com/');
     const subDir = url.replace(domain, '');
 
-    //Add remaining to URL request
-    // return this.http.get(`/api/${subDir}`).pipe(
-    //   tap((x) => {
-    //     console.log(x);
-    //   }),
-
-    //   catchError(this.handleError)
-    // );
-
     return this.http.get<{ data: Issue[] }>(`/api/${subDir}`).pipe(
-      //filter pull requests
+      tap((x) => {
+        console.log(x);
+      }),
       map(
         (response) =>
           response.data.filter((issue) => {
             return issue.pull_request ? false : true;
           }) || []
       ),
-      tap((x) => {
-        console.log(x);
-      }),
+
       catchError(this.handleError)
     );
   }
