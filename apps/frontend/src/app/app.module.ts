@@ -13,24 +13,44 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 //ngrx components
-import { issuesReducer } from './state/issues.reducer';
-import { ErrorReducer } from './state/error.reducer';
+import { repoUrlReducer } from './state/repoUrl/repoUrl.reducer';
+import { paginatorIndexReducer } from './state/paginator/paginator.reducer';
+import { issuesReducer } from './state/issues/issues.reducer';
+import { errorReducer } from './state/error/error.reducer';
+import { issueCountReducer } from './state/issues/issue-count.reducer';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { IssuesEffects } from './state/issues.effects';
+import { IssuesEffects } from './state/issues/issues.effects';
 
 //Custom Components
 import { IssuesListComponent } from './issues-list/issues-list.component';
+import { GetIssuesComponent } from './get-issues/get-issues.component';
+import { PaginatorComponent } from './paginator/paginator.component';
 
 @NgModule({
-  declarations: [AppComponent, IssuesListComponent],
+  declarations: [
+    AppComponent,
+    IssuesListComponent,
+    GetIssuesComponent,
+    PaginatorComponent,
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    StoreModule.forRoot({ issues: issuesReducer, error: ErrorReducer }, {}),
+    StoreModule.forRoot(
+      {
+        issues: issuesReducer,
+        error: errorReducer,
+        issueCount: issueCountReducer,
+        paginatorIndex: paginatorIndexReducer,
+        repoUrl: repoUrlReducer,
+      },
+      {}
+    ),
     EffectsModule.forRoot([IssuesEffects]),
     BrowserAnimationsModule,
     MatCardModule,
@@ -40,6 +60,7 @@ import { IssuesListComponent } from './issues-list/issues-list.component';
     MatButtonModule,
     MatCheckboxModule,
     MatToolbarModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

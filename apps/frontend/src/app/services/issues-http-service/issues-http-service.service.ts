@@ -4,7 +4,6 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Issue } from '../../issues-list/issues.model';
-import { response } from 'express';
 @Injectable({
   providedIn: 'root',
 })
@@ -12,6 +11,25 @@ export class IssuesHttpServiceService {
   constructor(private http: HttpClient) {}
 
   getIssues(url: string): Observable<any> {
+    const subDir = this.parseUrl(url);
+
+    return this.http.get<{ data: Issue[] }>(`/api/${subDir}`).pipe(
+      map((response) => response.data),
+
+      catchError(this.handleError)
+    );
+  }
+
+  getIssueCount(url: string) {
+    const subDir = this.parseUrl(url);
+    console.log(`/api/${subDir}/issueCount`);
+
+    return this.http
+      .get<number>(`/api/${subDir}/issueCount`)
+      .pipe(catchError(this.handleError));
+  }
+
+  parseUrl(url: string) {
     //Check for valid URL
     const regex = /github.com\/[\w-]+\/[\w-]+/;
     const validUrl = RegExp(regex);
@@ -25,21 +43,7 @@ export class IssuesHttpServiceService {
 
     //Remove domain
     const domain = RegExp('^(.*?)github.com/');
-    const subDir = url.replace(domain, '');
-
-    return this.http.get<{ data: Issue[] }>(`/api/${subDir}`).pipe(
-      tap((x) => {
-        console.log(x);
-      }),
-      map(
-        (response) =>
-          response.data.filter((issue) => {
-            return issue.pull_request ? false : true;
-          }) || []
-      ),
-
-      catchError(this.handleError)
-    );
+    return url.replace(domain, '');
   }
 
   private handleError(error: HttpErrorResponse) {

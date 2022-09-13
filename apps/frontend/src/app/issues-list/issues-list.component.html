@@ -1,40 +1,3 @@
-<mat-card class="get-issues-card">
-  <mat-card-title>Get Issues</mat-card-title>
-  <mat-card-subtitle
-    ><p>
-      Enter a Github URL, in the format <b>github.com/owner/repo/</b>
-    </p></mat-card-subtitle
-  >
-  <mat-card-content>
-    <form class="issues-form" action="">
-      <mat-form-field class="issues-form__url-input" appearance="fill">
-        <mat-label for="github-url">Github URL</mat-label>
-        <input
-          id="github-url"
-          name="github-url"
-          type="text"
-          [(ngModel)]="repoUrl"
-          placeholder="ex: https://github.com/octokit/octokit.js"
-          matInput
-        />
-      </mat-form-field>
-      <mat-checkbox
-        id="filter-pull-request"
-        class="checkbox"
-        name="filter-pull-request"
-        type="checkbox"
-        >Filter pull requests</mat-checkbox
-      >
-
-      <button color="primary" mat-raised-button (click)="getIssues(repoUrl, 1)">
-        Get Issues
-      </button>
-    </form>
-  </mat-card-content>
-</mat-card>
-
-<h2 *ngIf="error">{{ error }}</h2>
-
 <mat-card *ngFor="let issue of issues" class="issue-card">
   <div class="issue-card__subtitle">
     <mat-card-subtitle>{{ issue['user']['login'] }} </mat-card-subtitle>
@@ -55,11 +18,3 @@
     ></mat-card-actions
   >
 </mat-card>
-
-<!-- <mat-card *ngFor="let issue of issues">
-  <div>{{ issue['title'] }}</div>
-  <div>
-    <p>{{ issue['body'] }}</p>
-  </div>
-  <div></div>
-</mat-card> -->

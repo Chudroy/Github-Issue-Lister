@@ -1,4 +1,4 @@
-$card-width: 65vw;
+@use '../../styles/variables.scss' as var;
 
 :host {
   display: flex;
@@ -7,29 +7,6 @@ $card-width: 65vw;
   align-items: center;
   margin: 5rem;
 }
-.get-issues-card {
-  margin: 1rem;
-  width: $card-width;
-  max-width: 1000px;
-}
-.issues-form {
-  margin: auto auto 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  &__url-wrapper {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-around;
-  }
-
-  &__url-input {
-    flex-grow: 1;
-    width: 100%;
-  }
-}
 
 .checkbox {
   margin: auto auto 1rem;
@@ -37,7 +14,7 @@ $card-width: 65vw;
 
 .issue-card {
   margin: 1rem;
-  width: $card-width;
+  width: var.$card-width;
   max-width: 1000px;
 
   &__subtitle {
@@ -60,11 +37,7 @@ $card-width: 65vw;
 }
 
 @media only screen and (max-width: 600px) {
-  $sm-card-width: 80vw;
-  .get-issues-card {
-    width: $sm-card-width;
-  }
   .issue-card {
-    width: $sm-card-width;
+    width: var.$sm-card-width;
   }
 }

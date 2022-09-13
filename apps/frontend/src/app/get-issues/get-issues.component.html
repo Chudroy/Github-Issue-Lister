@@ -1,0 +1,31 @@
+<mat-card class="get-issues-card">
+  <mat-card-title>Get Issues</mat-card-title>
+  <mat-card-subtitle
+    ><p>
+      Enter a Github URL, in the format <b>github.com/owner/repo/</b>
+    </p></mat-card-subtitle
+  >
+  <mat-card-content>
+    <form class="issues-form" action="">
+      <mat-form-field class="issues-form__url-input" appearance="fill">
+        <mat-label for="github-url">Github URL</mat-label>
+        <input
+          id="github-url"
+          name="github-url"
+          type="text"
+          [(ngModel)]="repoUrl"
+          placeholder="ex: https://github.com/octokit/octokit.js"
+          matInput
+        />
+      </mat-form-field>
+
+      <button
+        color="primary"
+        mat-raised-button
+        (click)="searchForRepo(repoUrl)"
+      >
+        Get Issues
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>

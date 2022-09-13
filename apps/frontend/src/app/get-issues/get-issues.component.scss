@@ -1,0 +1,39 @@
+@use '../../styles/variables.scss' as var;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.get-issues-card {
+  margin: 1rem;
+  width: var.$card-width;
+  max-width: 1000px;
+}
+
+.issues-form {
+  margin: auto auto 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__url-wrapper {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-around;
+  }
+
+  &__url-input {
+    flex-grow: 1;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .get-issues-card {
+    width: var.$sm-card-width;
+  }
+}

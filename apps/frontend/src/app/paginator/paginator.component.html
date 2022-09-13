@@ -1,0 +1,8 @@
+<mat-paginator
+  #paginator
+  [length]="issueCount"
+  [pageSize]="issues.length"
+  [pageSizeOptions]="[30]"
+  (page)="turnPage($event)"
+>
+</mat-paginator>
