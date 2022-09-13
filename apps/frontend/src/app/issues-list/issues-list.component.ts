@@ -9,15 +9,14 @@ import { selectIssueList } from '../state/issues/issues.selectors';
   styleUrls: ['./issues-list.component.scss'],
 })
 export class IssuesListComponent implements OnInit {
-  issues: Array<Issue> = [];
+  issues: ReadonlyArray<Issue> = [];
   issues$ = this.store.select(selectIssueList);
 
   constructor(private store: Store) {}
 
   ngOnInit(): void {
-    this.issues$.subscribe((state: any) => {
-      this.issues = state as Array<Issue>;
-      // console.log(this.issues);
+    this.issues$.subscribe((state: ReadonlyArray<Issue>) => {
+      this.issues = state;
     });
   }
 

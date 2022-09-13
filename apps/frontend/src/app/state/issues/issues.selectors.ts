@@ -1,5 +1,6 @@
 import { createFeatureSelector } from '@ngrx/store';
+import { Issue } from '../../issues-list/issues.model';
+export const selectIssueList =
+  createFeatureSelector<ReadonlyArray<Issue>>('issues');
 
-export const selectIssueList = createFeatureSelector('issues');
-
-export const selectIssueCount = createFeatureSelector('issueCount');
+export const selectIssueCount = createFeatureSelector<number>('issueCount');

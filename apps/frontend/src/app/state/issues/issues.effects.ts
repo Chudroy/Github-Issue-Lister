@@ -6,18 +6,32 @@ import { map, mergeMap, catchError } from 'rxjs/operators';
 import { IssuesHttpServiceService } from '../../services/issues-http-service/issues-http-service.service';
 //actions
 import {
-  getIssueCount,
+  getNewIssues,
+  loadIssuesPage,
   retrievedIssueCount,
-  loadIssues,
   retrievedIssuesList,
   LoadIssuesError,
 } from './issues.actions';
 
 @Injectable()
 export class IssuesEffects {
+  getNewIssues$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(getNewIssues),
+      mergeMap((loadAction) =>
+        this.issuesHttpServiceService.getIssues(loadAction.url).pipe(
+          map((issues) => retrievedIssuesList({ issues })),
+          catchError((err) => {
+            return of(LoadIssuesError({ message: err }));
+          })
+        )
+      )
+    );
+  });
+
   loadIssues$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(loadIssues),
+      ofType(loadIssuesPage),
       mergeMap((loadAction) =>
         this.issuesHttpServiceService
           .getIssues(loadAction.url + `?p=${loadAction.page}`)
@@ -33,7 +47,7 @@ export class IssuesEffects {
 
   getIssueCount$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(getIssueCount),
+      ofType(getNewIssues),
       mergeMap((getIssueAction) =>
         this.issuesHttpServiceService.getIssueCount(getIssueAction.url).pipe(
           map((issueCount) => retrievedIssueCount({ issueCount: issueCount })),

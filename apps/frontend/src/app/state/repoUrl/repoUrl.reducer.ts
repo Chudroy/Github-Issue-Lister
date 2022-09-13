@@ -1,8 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
-import { setRepoUrl } from './repoUrl.actions';
+import { loadIssuesPage } from '../issues/issues.actions';
+import { getNewIssues } from '../issues/issues.actions';
 export const initialState = '';
 
 export const repoUrlReducer = createReducer(
   initialState,
-  on(setRepoUrl, (state, { url }): string => url)
+  on(getNewIssues, (state, { url }): string => url),
+  on(loadIssuesPage, (state, { url }): string => url)
 );

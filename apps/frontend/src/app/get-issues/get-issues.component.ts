@@ -1,10 +1,8 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
-import { setRepoUrl } from '../state/repoUrl/repoUrl.actions';
-import { loadIssues, getIssueCount } from '../state/issues/issues.actions';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { PageEvent } from '@angular/material/paginator';
 import { selectError } from '../state/error/error.selectors';
-import { resetIndex } from '../state/paginator/paginator.actions';
+import { getNewIssues } from '../state/issues/issues.actions';
 //for testing
 import { fakeIssues } from '../fake-issues/fake-issues';
 
@@ -22,35 +20,26 @@ export class GetIssuesComponent implements OnInit {
   constructor(private store: Store) {}
 
   ngOnInit(): void {
-    this.error$.subscribe((state: any) => {
-      this.error = state as string;
+    this.error$.subscribe((state: string) => {
+      this.error = state;
     });
   }
 
   searchForRepo(url: string) {
-    this.getIssueCount(url);
-    this.getIssues(url, 1);
-    this.resetPaginatorIndex();
-    this.setRepoUrl(url);
+    this.getIssues(url);
+    this.clearError();
   }
 
-  setRepoUrl(url: string) {
-    this.store.dispatch(setRepoUrl({ url }));
+  clearError() {
+    if (this.error !== '') {
+      this.error = '';
+    }
   }
 
-  resetPaginatorIndex() {
-    this.store.dispatch(resetIndex());
-  }
-
-  getIssueCount(url: string) {
-    this.store.dispatch(getIssueCount({ url: url }));
-  }
-
-  getIssues(url: string, page: number) {
+  getIssues(url: string) {
     this.store.dispatch(
-      loadIssues({
+      getNewIssues({
         url: url,
-        page: page,
       })
     );
   }
