@@ -8,13 +8,25 @@
     [class]="fadeContentBody(issue)"
     class="issue-card__content"
   >
-    <p>{{ issue['body'] }}</p>
+    <p>
+      {{ issue['body'] }}
+    </p>
   </mat-card-content>
   <mat-divider class="divider--issue-card" inset></mat-divider>
   <mat-card-content> {{ issue['created_at'] | date }}</mat-card-content>
-  <mat-card-actions>
-    <a [href]="issue['html_url']" target="_blank" color="accent" mat-button
+  <mat-card-actions class="issue-card__actions">
+    <a
+      class="issue-card__link"
+      [href]="issue['html_url']"
+      target="_blank"
+      color="accent"
+      mat-button
       >GO TO ISSUE</a
-    ></mat-card-actions
-  >
+    >
+    <mat-chip-list class="issue-card__tags">
+      <mat-chip *ngIf="issue['pull_request']" color="accent" selected
+        >Pull Request</mat-chip
+      ></mat-chip-list
+    >
+  </mat-card-actions>
 </mat-card>

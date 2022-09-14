@@ -14,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatChipsModule } from '@angular/material/chips';
 
 //ngrx components
 import { repoUrlReducer } from './state/repoUrl/repoUrl.reducer';
@@ -61,6 +62,7 @@ import { PaginatorComponent } from './paginator/paginator.component';
     MatCheckboxModule,
     MatToolbarModule,
     MatPaginatorModule,
+    MatChipsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

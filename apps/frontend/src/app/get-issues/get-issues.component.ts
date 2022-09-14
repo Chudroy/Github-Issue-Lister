@@ -4,7 +4,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { selectError } from '../state/error/error.selectors';
 import { getNewIssues } from '../state/issues/issues.actions';
 //for testing
-import { fakeIssues } from '../fake-issues/fake-issues';
+import { fakeIssues } from '../testing_assets/fake-issues';
 
 @Component({
   selector: 'prueba-irontec-get-issues',
