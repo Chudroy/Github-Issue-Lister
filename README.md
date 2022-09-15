@@ -13,7 +13,7 @@ GITHUB_PAT: tu_personal_access_token_de_github
 - en dos terminales distintos, ejecuta `nx serve backend` primero en uno, y después `nx serve frontend` en otro.
 - abre la aplicación de angular en http://localhost:4200/
 
-Y la aplicación estará lista para probar. La Personal Access Token es opcional, pero aumentará la cantidad de requests que puedas hacer al API de Github. Sin el token, te dará una respuesta 403 las solicitudes a la API al de poco tiempo.
+Y la aplicación estará lista para probar. El Personal Access Token es opcional, pero aumentará la cantidad de requests que puedas hacer al API de Github. Sin el token, te dará una respuesta 403 las solicitudes a la API al de poco tiempo.
 
 ## Objetivo
 
@@ -35,7 +35,8 @@ Desde Nx también puedo ejecutar los tests de la aplicación frontend con el com
 
 fuentes: 
 - https://nx.dev/getting-started/core-tutorial
-- https://nx.dev/getting-started/angular-tutorial, https://nx.dev/getting-started/node-tutorial
+- https://nx.dev/getting-started/angular-tutorial
+-  https://nx.dev/getting-started/node-tutorial
 
 ## NgRx
 
@@ -55,7 +56,7 @@ fuentes:
 
 ## Tests
 
-Nx prestablece el entorno de testeo de Angular con el framework Jest. He aprendido a utilizar lo fundamental de este framework, además de lo que he aprendido en la documentación de NgRx para testear la arquitectura de Stores. He implementado mis propios tests, para asegurar el funcionamiento de lo que he creado, y para que un futúro lector de mi código pueda utilizar lo que encuentre en los tests unitarios para entender la funcionalidad pretendida de lo que he escrito.
+Nx prestablece el entorno de testeo de Angular con el framework Jest. He aprendido a utilizar lo fundamental de este framework, además de lo que he aprendido en la documentación de NgRx para testear la arquitectura de Stores. He implementado mis propios tests, para asegurar el funcionamiento de lo que he creado, y para que un futúro lector de mi código pueda utilizar lo que encuentre en los tests unitarios para entender la funcionalidad pretendida del código que he escrito en cada componente.
 
 fuentes:
 
@@ -67,22 +68,22 @@ fuentes:
 El proyecto abarca los requisitos minimos de la prueba, además de los requisitos opcionales de testeo.
 
 - Interacción usuario
-  - Solicitar la URL del repositorio en github. ✅
-  - Listar (con paginado) las issues de ese repositorio, con información relevante de cada issue. ✅
+  - Solicitar la URL del repositorio en github  ✅
+  - Listar (con paginado) las issues de ese repositorio, con información relevante de cada issue ✅
   
 - Sistemas utilizados
-  - Angular ✅
+  - Angular          ✅
   - Angular Material ✅
-  - NgRx ✅
+  - NgRx             ✅
   
 - Opcional
-  - Tests unitarios ✅
+  - Tests unitarios  ✅
   
 ## Reflexión
 
 Este proyecto ha sido sobre todo uno de aprendizaje. En menos de dos semanas, he aprendido la funcionalidad básica de Nx, NgRx y de tests unitarios con Jest. La implementación de los requisitos básicos se resolvió rápidamente. Mucho tiempo de esta prueba se ha dedicado en entender el porqué detrás de cada cosa. Algunos cabos sueltos que me quedan son:
 
-Por un lado, en Nx, existe la posibilidad de crear una librería donde se guardan los componentes creados de Angular. Al ser un proyecto pequeño, los he guardado en la misma aplicación donde se utilizan.
+Por un lado, en Nx, existe la posibilidad de crear una librería donde se guardan los componentes creados de Angular. Al ser un proyecto pequeño, los he guardado en la misma aplicación donde se utilizan. En un entorno profesional no sé si esto es una buena práctica o no.
 
 Por otro lado, En la solicitud de issues de la API de Github, se incluyen los pull requests. No hay una manera directa de filtrarlos cómodamente. Da igual si se filtran en el frontend o en el backend (aunque según [este artículo al final de todo](https://blog.angular-university.io/angular-ngrx-store-and-effects-crash-course/), conviene hacerlo en el front), en el paginado se descompensa el número de issues por página y el número marcado de issues totales. 
 
