@@ -9,8 +9,6 @@ export const paginatorIndexReducer = createReducer(
     return 0;
   }),
   on(loadIssuesPage, (state, { page }): number => {
-    console.log('page number:', page - 1);
-
     return page - 1;
   })
 );

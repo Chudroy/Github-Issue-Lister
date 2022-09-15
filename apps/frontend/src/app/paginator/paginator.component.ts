@@ -29,7 +29,6 @@ export class PaginatorComponent implements OnInit, AfterViewInit {
   issues$ = this.store.select(selectIssueList);
   //paginator
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  paginatorIndex = 0;
   paginatorIndex$ = this.store.select(selectPaginatorIndex);
   //repo URL
   repoUrl = '';

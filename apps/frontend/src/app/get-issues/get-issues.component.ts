@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { PageEvent } from '@angular/material/paginator';
 import { selectError } from '../state/error/error.selectors';
 import { getNewIssues } from '../state/issues/issues.actions';
 //for testing
@@ -13,7 +12,6 @@ import { fakeIssues } from '../testing_assets/fake-issues';
 })
 export class GetIssuesComponent implements OnInit {
   repoUrl = 'https://github.com/freeCodeCamp/freeCodeCamp';
-  pageEvent!: PageEvent;
   error = '';
   error$ = this.store.select(selectError);
 

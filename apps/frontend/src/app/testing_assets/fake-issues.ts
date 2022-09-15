@@ -1,6 +1,28 @@
 import { formatDate } from '@angular/common';
 import { Issue, User } from '../issues-list/issues.model';
 
+export const longIssue: Issue = {
+  title: 'title',
+  body: '#'.repeat(301),
+  user: {
+    login: 'anonymous',
+  },
+  number: 1,
+  created_at: '2011-04-10T20:09:31Z',
+  html_url: 'https://api.github.com/repos/octocat/Hello-World/issues/1347',
+};
+
+export const shortIssue: Issue = {
+  title: 'title',
+  body: 'a',
+  user: {
+    login: 'anonymous',
+  },
+  number: 1,
+  created_at: '2011-04-10T20:09:31Z',
+  html_url: 'https://api.github.com/repos/octocat/Hello-World/issues/1347',
+};
+
 export const fakeIssues: Issue[] = [
   {
     title: 'Update 104-datastructures.md',

@@ -20,8 +20,8 @@ export class IssuesListComponent implements OnInit {
     });
   }
 
-  fadeContentBody(issue: Issue): string {
-    if (issue['body'] && issue['body'].length > 400) {
+  fadeContentBody(issue: Issue, afterLength: number): string {
+    if (issue['body'] && issue['body'].length > afterLength) {
       return 'fade';
     }
     return '';
