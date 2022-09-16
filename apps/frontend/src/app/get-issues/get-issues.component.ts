@@ -18,22 +18,26 @@ export class GetIssuesComponent implements OnInit {
   constructor(private store: Store) {}
 
   ngOnInit(): void {
+    //Get http request message errors
     this.error$.subscribe((state: string) => {
       this.error = state;
     });
   }
 
+  //Bound method to form button
   searchForRepo(url: string) {
     this.getIssues(url);
     this.clearError();
   }
 
+  //Clear error message if there is one.
   clearError() {
     if (this.error !== '') {
       this.error = '';
     }
   }
 
+  //Get new page of issues, reset paginator to 0.
   getIssues(url: string) {
     this.store.dispatch(
       getNewIssues({

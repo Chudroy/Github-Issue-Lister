@@ -7,5 +7,8 @@ export const initialState: ReadonlyArray<Issue> = [];
 
 export const issuesReducer = createReducer(
   initialState,
-  on(retrievedIssuesList, (state, { issues }): ReadonlyArray<Issue> => issues)
+  on(retrievedIssuesList, (state, { issues }): ReadonlyArray<Issue> => {
+    // update state to http requested issues
+    return issues;
+  })
 );

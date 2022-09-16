@@ -5,6 +5,8 @@ export const initialState = '';
 
 export const repoUrlReducer = createReducer(
   initialState,
-  on(getNewIssues, (state, { url }): string => url),
-  on(loadIssuesPage, (state, { url }): string => url)
+  on(getNewIssues, (state, { url }): string => {
+    //Update repo url when requesting new repo
+    return url;
+  })
 );

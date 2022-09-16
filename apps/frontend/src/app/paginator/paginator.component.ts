@@ -39,7 +39,6 @@ export class PaginatorComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.issues$.subscribe((state: ReadonlyArray<Issue>) => {
       this.issues = state as ReadonlyArray<Issue>;
-      // console.log(this.issues);
     });
     this.issueCount$.subscribe((state: number) => {
       this.issueCount = state;
@@ -57,6 +56,9 @@ export class PaginatorComponent implements OnInit, AfterViewInit {
     });
   }
 
+  //Get new page of issues.
+  //Matpaginator indexes from 0,
+  //Github API indexes from 1.
   turnPage(pageEvent: PageEvent) {
     this.store.dispatch(
       loadIssuesPage({

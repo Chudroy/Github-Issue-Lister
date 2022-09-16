@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Issue } from './issues.model';
 import { Store } from '@ngrx/store';
 import { selectIssueList } from '../state/issues/issues.selectors';
-//for testing
+
 @Component({
   selector: 'prueba-irontec-issues-list',
   templateUrl: './issues-list.component.html',
@@ -20,6 +20,9 @@ export class IssuesListComponent implements OnInit {
     });
   }
 
+  //If the issue is too long, add 'fade' class
+  //to fade its content. the full issue can be
+  //seen on Github by clicking "GO TO ISSUE" button
   fadeContentBody(issue: Issue, afterLength: number): string {
     if (issue['body'] && issue['body'].length > afterLength) {
       return 'fade';

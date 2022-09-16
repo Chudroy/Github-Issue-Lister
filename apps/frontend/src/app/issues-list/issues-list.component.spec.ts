@@ -8,7 +8,7 @@ import {
 import { IssuesListComponent } from './issues-list.component';
 import { Issue } from '../issues-list/issues.model';
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
 import { MatCard } from '@angular/material/card';
 
 describe('IssuesListComponent', () => {
@@ -22,6 +22,7 @@ describe('IssuesListComponent', () => {
       imports: [],
       declarations: [IssuesListComponent, MatCard],
       providers: [provideMockStore({ initialState })],
+      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
 
     fixture = TestBed.createComponent(IssuesListComponent);

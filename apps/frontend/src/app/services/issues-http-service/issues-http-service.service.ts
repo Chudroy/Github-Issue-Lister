@@ -22,15 +22,15 @@ export class IssuesHttpServiceService {
 
   getIssueCount(url: string) {
     const subDir = this.parseUrl(url);
-    console.log(`/api/${subDir}/issueCount`);
 
     return this.http
       .get<number>(`/api/${subDir}/issueCount`)
       .pipe(catchError(this.handleError));
   }
 
+  //get subdir from url
   parseUrl(url: string) {
-    //Check for valid URL
+    //Check for valid URL: github.com/OWNER/REPO
     const regex = /github.com\/[\w-]+\/[\w-]+/;
     const validUrl = RegExp(regex);
 
@@ -41,8 +41,9 @@ export class IssuesHttpServiceService {
       );
     }
 
-    //Remove domain
+    //Remove domain 'github.com/'
     const domain = RegExp('^(.*?)github.com/');
+    //return subdir 'OWNER/REPO'
     return url.replace(domain, '');
   }
 
