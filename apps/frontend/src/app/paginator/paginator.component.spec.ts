@@ -9,7 +9,7 @@ import { StoreModule } from '@ngrx/store';
 import * as PaginatorIndexReducer from '../state/paginator/paginator.reducer';
 import { loadIssuesPage } from '../state/issues/issues.actions';
 
-describe('PaginatorComponent', () => {
+describe('PaginatorComponent Unit Tests', () => {
   let component: PaginatorComponent;
   let fixture: ComponentFixture<PaginatorComponent>;
   let store: MockStore;
@@ -102,8 +102,8 @@ describe('PaginatorComponent', () => {
     });
   });
 
-  describe('#paginator page index ', () => {
-    it('should update page index to the (dispatched page number - 1)', () => {
+  describe('#paginatorIndex ', () => {
+    it('should update paginatorIndex state to the (dispatched page number - 1)', () => {
       const { initialState } = PaginatorIndexReducer;
       const newPageState = 2;
       const newPageIndex = newPageState - 1;
