@@ -25,6 +25,7 @@ En este proyecto he tenido un primer contacto con, y he aprendido a utilizar:
 - Nx
 - NgRx
 - Tests Unitarios
+- Tests de integración
 - API de Github
 
 ## Nx
@@ -58,6 +59,8 @@ fuentes:
 
 Nx prestablece el entorno de testeo de Angular con el framework Jest. He aprendido a utilizar lo fundamental de este framework, además de lo que he aprendido en la documentación de NgRx para testear la arquitectura de Stores. He implementado mis propios tests, para asegurar el funcionamiento de lo que he creado, y para que un futúro lector de mi código pueda utilizar lo que encuentre en los tests unitarios para entender la funcionalidad pretendida del código que he escrito en cada componente.
 
+También he conseguido un test de integración, en el archivo `src/app/integration-tests.spec.ts`. En este test, se trata de que en el `PaginatorComponent` se resetease el índice del paginador a 0 cuando se buscaban nuevas issues clicando el botón en el componente 'GetIssuesComponent'
+
 fuentes:
 
 - https://jestjs.io/docs/getting-started
@@ -78,10 +81,11 @@ El proyecto abarca los requisitos minimos de la prueba, además de los requisito
   
 - Opcional
   - Tests unitarios  ✅
+  - Test de integración ✅
   
 ## Reflexión
 
-Este proyecto ha sido sobre todo uno de aprendizaje. En menos de dos semanas, he aprendido la funcionalidad básica de Nx, NgRx y de tests unitarios con Jest. La implementación de los requisitos básicos se resolvió rápidamente. Mucho tiempo de esta prueba se ha dedicado en entender el porqué detrás de cada cosa. Algunos cabos sueltos que me quedan son:
+Este proyecto ha sido sobre todo uno de aprendizaje. En menos de dos semanas, he aprendido la funcionalidad básica de Nx, NgRx y de tests unitarios y de integración con Jest y las funciones auxiliares de Angular. Mientras que la implementación de los requisitos básicos se resolvió rápidamente, mucho tiempo de esta prueba se ha dedicado en entender el porqué detrás de cada cosa. Algunos cabos sueltos que me quedan son:
 
 Por un lado, en Nx, existe la posibilidad de crear una librería donde se guardan los componentes creados de Angular. Al ser un proyecto pequeño, los he guardado en la misma aplicación donde se utilizan. En un entorno profesional no sé si esto es una buena práctica o no.
 
@@ -92,10 +96,3 @@ Según la [documentación de Github](https://docs.github.com/en/rest/issues/issu
 Siento que en el contexto de la prueba, esto ha sido un detalle demasiado complejo para pulir, y he optado por incluir un marcador en una esquina de cada issue, si es un pull request, que pone "Pull Request".
 
 En cuanto al testeo, he escrito tests con el objetivo principal de aprender a escribirlos y ver lo que se puede conseguir. Aún me queda por investigar y aprender buenas prácticas sobre escribir tests tanto en general como en el marco de cada framework (por ejemplo, testear NgRx).
-
-
-
-
-
-
-
