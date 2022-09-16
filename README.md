@@ -47,7 +47,7 @@ Con NgRx he aprendido a manejar el estado de la aplicación de Angular utilizand
 - Reducers: para manejar esas solicitudes. En base a la solicitud recibida, los reducers actualizan el estado de una manera u otra.
 - Selectors: para tener una referencia a cualquier pieza de estado de interés para un componente, y actualizar la UI según nuevas actualizaciones.
 
-He utilizado también [@ngrx/effects](https://ngrx.io/guide/effects) para manejar los side-effects de la ejecución de acciones, como por ejemplo ejecutar la solicitud de nuevas issues desde `issues.effects.ts` al interceptar la acción `getNewIssues` enviada desde `GetIssuesComponent`, en vez de que `GetIssuesComponent` tenga una referencia directa al servicio de solicitud, y ejecute el servicio desde el componente. De esta forma, el componente solo tiene la responsabilidad de enviar una acción, sin saber cómo esa acción será procesada.
+He utilizado también [@ngrx/effects](https://ngrx.io/guide/effects) para manejar los side-effects de la ejecución de acciones, como por ejemplo ejecutar la solicitud http de nuevas issues desde `issues.effects.ts` al interceptar la acción `getNewIssues` enviada desde `GetIssuesComponent`, en vez de que `GetIssuesComponent` tenga una referencia directa al servicio de solicitud, y ejecute el servicio desde el componente. De esta forma, el componente solo tiene la responsabilidad de enviar una acción, sin saber cómo esa acción será procesada.
 
 fuentes: 
 - https://ngrx.io/guide/store/walkthrough 
