@@ -19,10 +19,10 @@ export class IssuesEffects {
     return this.actions$.pipe(
       ofType(getNewIssues),
       mergeMap((loadAction) =>
-        this.issuesHttpServiceService.getIssues(loadAction.url).pipe(
+        this.issuesHttpServiceService.getIssues(loadAction.repoUrl).pipe(
           map((issues) => retrievedIssuesList({ issues })),
           catchError((err) => {
-            return of(LoadIssuesError({ message: err }));
+            return of(LoadIssuesError({ errorMessage: err }));
           })
         )
       )
@@ -38,7 +38,7 @@ export class IssuesEffects {
           .pipe(
             map((issues) => retrievedIssuesList({ issues })),
             catchError((err) => {
-              return of(LoadIssuesError({ message: err }));
+              return of(LoadIssuesError({ errorMessage: err }));
             })
           )
       )
@@ -49,12 +49,16 @@ export class IssuesEffects {
     return this.actions$.pipe(
       ofType(getNewIssues),
       mergeMap((getIssueAction) =>
-        this.issuesHttpServiceService.getIssueCount(getIssueAction.url).pipe(
-          map((issueCount) => retrievedIssueCount({ issueCount: issueCount })),
-          catchError((err) => {
-            return of(LoadIssuesError({ message: err }));
-          })
-        )
+        this.issuesHttpServiceService
+          .getIssueCount(getIssueAction.repoUrl)
+          .pipe(
+            map((issueCount) =>
+              retrievedIssueCount({ issueCount: issueCount })
+            ),
+            catchError((err) => {
+              return of(LoadIssuesError({ errorMessage: err }));
+            })
+          )
       )
     );
   });

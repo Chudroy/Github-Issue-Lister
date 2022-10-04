@@ -4,7 +4,7 @@ import { Issue } from '../../issues-list/issues.model';
 // Request Issues from new Repo
 export const getNewIssues = createAction(
   '[Issue List/API] Get New Issues',
-  props<{ url: string }>()
+  props<{ repoUrl: string }>()
 );
 
 // Request new page of Issues from current repo
@@ -28,5 +28,5 @@ export const retrievedIssueCount = createAction(
 // Get http request error message
 export const LoadIssuesError = createAction(
   '[Issue List/API] Retrieve Issues Error',
-  props<{ message: string }>()
+  props<{ errorMessage: string }>()
 );

@@ -1,5 +1,5 @@
 <mat-paginator
-  [length]="issueCount"
+  [length]="issueCount$ | async"
   [pageSize]="issues.length"
   [pageSizeOptions]="[30]"
   (page)="turnPage($event)"

@@ -2,19 +2,12 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Issue } from '../issues-list/issues.model';
 // ngrx
 import { Store } from '@ngrx/store';
-// ngrx: selectors
-import { selectRepoUrl } from '../state/repoUrl/repoUrl.selector';
-import {
-  selectIssueList,
-  selectIssueCount,
-} from '../state/issues/issues.selectors';
-import { selectPaginatorIndex } from '../state/paginator/paginator.selector';
 //ngrx: actions
 import { loadIssuesPage } from '../state/issues/issues.actions';
 //Angular Material
 import { MatPaginator } from '@angular/material/paginator';
 import { PageEvent } from '@angular/material/paginator';
-
+import { issuesFeature } from '../state/issues/issues.reducer';
 @Component({
   selector: 'prueba-irontec-paginator',
   templateUrl: './paginator.component.html',
@@ -22,26 +15,22 @@ import { PageEvent } from '@angular/material/paginator';
 })
 export class PaginatorComponent implements OnInit, AfterViewInit {
   //issue count
-  issueCount = 0;
-  issueCount$ = this.store.select(selectIssueCount);
+  issueCount$ = this.store.select(issuesFeature.selectIssueCount);
   //issue list
   issues: ReadonlyArray<Issue> = [];
-  issues$ = this.store.select(selectIssueList);
+  issues$ = this.store.select(issuesFeature.selectIssues);
   //paginator
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  paginatorIndex$ = this.store.select(selectPaginatorIndex);
+  paginatorIndex$ = this.store.select(issuesFeature.selectPaginatorIndex);
   //repo URL
   repoUrl = '';
-  repoUrl$ = this.store.select(selectRepoUrl);
+  repoUrl$ = this.store.select(issuesFeature.selectRepoUrl);
 
   constructor(private store: Store) {}
 
   ngOnInit(): void {
     this.issues$.subscribe((state: ReadonlyArray<Issue>) => {
       this.issues = state as ReadonlyArray<Issue>;
-    });
-    this.issueCount$.subscribe((state: number) => {
-      this.issueCount = state;
     });
 
     this.repoUrl$.subscribe((state: string) => {

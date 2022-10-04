@@ -17,11 +17,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatChipsModule } from '@angular/material/chips';
 
 //ngrx components
-import { repoUrlReducer } from './state/repoUrl/repoUrl.reducer';
-import { paginatorIndexReducer } from './state/paginator/paginator.reducer';
-import { issuesReducer } from './state/issues/issues.reducer';
-import { errorReducer } from './state/error/error.reducer';
-import { issueCountReducer } from './state/issues/issue-count.reducer';
+import { issuesFeature } from './state/issues/issues.reducer';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { IssuesEffects } from './state/issues/issues.effects';
@@ -42,16 +38,8 @@ import { PaginatorComponent } from './paginator/paginator.component';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    StoreModule.forRoot(
-      {
-        issues: issuesReducer,
-        error: errorReducer,
-        issueCount: issueCountReducer,
-        paginatorIndex: paginatorIndexReducer,
-        repoUrl: repoUrlReducer,
-      },
-      {}
-    ),
+    StoreModule.forFeature(issuesFeature),
+    StoreModule.forRoot({}),
     EffectsModule.forRoot([IssuesEffects]),
     BrowserAnimationsModule,
     MatCardModule,

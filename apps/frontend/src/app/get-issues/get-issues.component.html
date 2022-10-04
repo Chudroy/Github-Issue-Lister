@@ -31,4 +31,4 @@
   </mat-card-content>
 </mat-card>
 
-<p *ngIf="error">{{ error }}</p>
+<p *ngIf="error$ | async">{{ error$ | async }}</p>
