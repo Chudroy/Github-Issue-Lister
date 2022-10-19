@@ -9,7 +9,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { PageEvent } from '@angular/material/paginator';
 import { issuesFeature } from '../state/issues/issues.reducer';
 @Component({
-  selector: 'prueba-irontec-paginator',
+  selector: 'github-issue-lister-paginator',
   templateUrl: './paginator.component.html',
   styleUrls: ['./paginator.component.scss'],
 })

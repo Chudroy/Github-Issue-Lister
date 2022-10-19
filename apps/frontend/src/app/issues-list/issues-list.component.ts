@@ -3,7 +3,7 @@ import { Issue } from './issues.model';
 import { Store } from '@ngrx/store';
 import { issuesFeature } from '../state/issues/issues.reducer';
 @Component({
-  selector: 'prueba-irontec-issues-list',
+  selector: 'github-issue-lister-issues-list',
   templateUrl: './issues-list.component.html',
   styleUrls: ['./issues-list.component.scss'],
 })

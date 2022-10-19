@@ -5,7 +5,7 @@ import { getNewIssues } from '../state/issues/issues.actions';
 import { fakeIssues } from '../testing_assets/fake-issues';
 import { issuesFeature } from '../state/issues/issues.reducer';
 @Component({
-  selector: 'prueba-irontec-get-issues',
+  selector: 'github-issue-lister-get-issues',
   templateUrl: './get-issues.component.html',
   styleUrls: ['./get-issues.component.scss'],
 })

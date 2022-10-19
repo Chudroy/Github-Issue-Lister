@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'prueba-irontec-root',
+  selector: 'github-issue-lister-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })

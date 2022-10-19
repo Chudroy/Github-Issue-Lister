@@ -5,11 +5,11 @@ import { MatToolbar } from '@angular/material/toolbar';
 
 // @Component({ selector: 'mat-toolbar', template: '' })
 // class MatToolbar {}
-@Component({ selector: 'prueba-irontec-get-issues', template: '' })
+@Component({ selector: 'github-issue-lister-get-issues', template: '' })
 class GetIssuesComponent {}
-@Component({ selector: 'prueba-irontec-issues-list', template: '' })
+@Component({ selector: 'github-issue-lister-issues-list', template: '' })
 class IssuesListComponent {}
-@Component({ selector: 'prueba-irontec-paginator', template: '' })
+@Component({ selector: 'github-issue-lister-paginator', template: '' })
 class PaginatorComponent {}
 
 describe('AppComponent', () => {
